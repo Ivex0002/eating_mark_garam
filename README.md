@@ -1,10 +1,10 @@
 # 미션1
 
-### 컴포넌트 및 레이어 설계
+## 컴포넌트 및 레이어 설계
 
-제가 이미 만들고 배포했던 npm 컴포넌트인 vive-floating-box를 재활용 하여 만들었습니다
-해당 링크 : https://www.npmjs.com/package/vive-floating-box
-해당 컴포넌트가 쓰인 예시 : <Holder>, <PlaceCard>
+제가 이미 만들고 배포했던 npm 컴포넌트인 vive-floating-box를 재활용 하여 만들었습니다<br>
+해당 링크 : https://www.npmjs.com/package/vive-floating-box <br>
+해당 컴포넌트가 쓰인 예시 : Holder, PlaceCard
 
 ```tsx
 export default function Holder({ children }: HolderProps) {
@@ -74,7 +74,10 @@ export default function NearPlaces({}) {
 }
 ```
 
-### 요청 로직
+<br>
+<br>
+
+## 요청 로직
 
 ```ts
 export const api = axios.create({
@@ -104,7 +107,10 @@ export async function fetchPlaces() {
 
 이런 식으로 api를 불러와 데이터를 요청했습니다.
 
-### 어려웠던 점
+<br>
+<br>
+
+## 어려웠던 점
 
 동일한 컴포넌트에서 메서드를 분리해서 사용하기 위해
 src\types\DelOrAdd.ts 에
