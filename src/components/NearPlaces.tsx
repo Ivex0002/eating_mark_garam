@@ -68,15 +68,14 @@ export default function NearPlaces({}) {
         <FloatingBox onlyActiveHover={true}>
           <div className="card" onClick={() => toggleSort()}>
             <img src="src\assets\mapIcon.png" alt="mapIcon" />
-            <span style={{textAlign:"center"}}>내 위치 기반 정렬</span>
+            <span style={{ textAlign: "center" }}>내 위치 기반 정렬</span>
           </div>
         </FloatingBox>
       </PlaceCardSt>,
-      ...places.map((el) => (
+      places.map((el) => (
         <PlaceCard place={el} delOrAdd={DelOrAdd.add} key={el.id}></PlaceCard>
       )),
     ];
   }
   return <Holder>{content}</Holder>;
 }
-

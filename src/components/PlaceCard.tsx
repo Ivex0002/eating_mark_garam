@@ -60,7 +60,11 @@ export default function PlaceCard({ place, delOrAdd }: PlaceCardProps) {
           <ConfirmOverlay onClick={cancelDelete}>
             <FloatingBox onlyActiveHover={true} moveRate={0}>
               <ConfirmBox>
-                <p>정말 {postposition.put(place.title, '을')} 즐겨찾기에서 제거하시겠습니까?</p>
+                <p>
+                  정말 <span style={{ fontWeight: "700" }}>{place.title}</span>
+                  {postposition.pick(place.title, "을")} 즐겨찾기에서
+                  제거하시겠습니까?
+                </p>
                 <button onClick={confirmDelete}>확인</button>
                 <button onClick={cancelDelete}>취소</button>
               </ConfirmBox>
@@ -89,6 +93,7 @@ const ConfirmBox = styled.div`
   z-index: 1001;
 
   p {
+    font-size:1.2rem;
     margin-bottom: 1rem;
   }
 
