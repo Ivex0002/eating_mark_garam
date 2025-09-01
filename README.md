@@ -164,9 +164,39 @@ const handleClick = () => {
 이렇게 분기처리를 했습니다.
 
 상위 컴포넌트에선
-````tsx
+
+```tsx
 <PlaceCard place={el} delOrAdd={DelOrAdd.del} />
-````
+```
+
 이런식으로 간편하게 불러오기만 하면 되도록 구성했습니다.
 
 처음엔 enum이나 글로벌 타입을 써보려고 여러가지 시도를 하였으나, erasableSyntaxOnly 옵션 오류에 막혀 이 방식을 채택하게 되었습니다.
+
+## loading UI
+
+```tsx
+const [loading, setLoading] = useState<boolean>(true);
+```
+
+src\components\MyPlaces.tsx 에 해당 상태 변수를 추가했습니다
+debugger 옵션으로 해당 코드가 작동됨을 확인했습니다
+loading 상태가 true일때, myPlacesArr이 0일때, 유효한 myPlacesArr이 존재할때 각각 분기를 나누어 다른 content를 Holder안에 보여주어 코드 재활용성을 높였습니다
+
+## 404 에러 처리
+무조건 서버 데이터로 처리해야하는 
+src\components\NearPlaces.tsx 에서 해당 로직을 작성했습니다
+
+## 위치기반 정렬
+src\components\NearPlaces.tsx
+isSort 상태 변수를 두고 버튼을 눌렀을 때 이 변수가 토글되며, 토글 되었을 때 정렬 함수가 작동 하도록 useEffect에 isSort 변수를 구독해 작동하도록 만들었습니다
+navigator.geolocation를 사용해 사용자의 latitude, longitude를 받아오도록 하고, 이를 제공된 sortPlacesByDistance 메서드를 통해 장소 소팅을 하도록 만들었습니다.
+
+## 즐겨찾기 삭제 모달 창 추가
+src\components\PlaceCard.tsx
+showConfirm상태 변수를 추가해 모달창이 표시될지 여부를 관리하게 만들었습니다.
+switch 문의 case DelOrAdd.del: 의 기존 로직은 confirmDelete으로 분리하고, 단순히 모달창(ConfirmBox)을 호출하는 기능만 수행하도록 만들었습니다.
+ConfirmBox 내부 버튼에서 confirmDelete, cancelDelete 를 호출해 확인/취소 기능을 구현했습니다.
+기존 디자인의 zindex가 999 였기에 오버레이 디자인은 z-index: 1000; 을 부여해 확실히 적용되도록 만들었습니다.
+자꾸 img요소만 랜덤하게 ConfirmBox의 z-index: 1000;를 뚫고 나와서 createPortal로 상위요소로 이동시켜 적용했습니다.
+ConfirmBox의 내부 p태그에서 이름을 유동적으로 적용시키기 위해 cox-postposition라이브러리를 적용했습니다.(을/를 처리)

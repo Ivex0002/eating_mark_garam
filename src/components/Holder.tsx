@@ -19,7 +19,8 @@ export default function Holder({ children }: HolderProps) {
 const HolderSt = styled.div`
   position: relative;
   z-index: 999;
-  margin-top: 6rem;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
 
   .box_move {
     .box_size {
