@@ -1,5 +1,3 @@
-// src/types/global.d.ts
-
 // 전역 스코프에 인터페이스 추가
 declare global {
   interface Place {

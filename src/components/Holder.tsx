@@ -24,6 +24,10 @@ const HolderSt = styled.div`
 
   .box_move {
     .box_size {
+      /* holder의 사이즈업만 조금 작게 조정 */
+      &:hover{
+        transform: scale(1.08) !important;
+      }
       .holder {
         background-color: #cfcfcf55;
         width: 50rem;

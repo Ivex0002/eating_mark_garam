@@ -17,7 +17,7 @@ interface PlaceCardProps {
 export default function PlaceCard({ place, delOrAdd }: PlaceCardProps) {
   const baseURL = api.defaults.baseURL;
   const { addPlace, delPlace, isAlreadyExist } = useUserPlacesStore();
-  const [showConfirm, setShowConfirm] = useState<Boolean>(false);
+  const [showConfirm, setShowConfirm] = useState<boolean>(false);
 
   const confirmDelete = () => {
     deleteUserPlace(place.id);

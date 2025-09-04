@@ -31,3 +31,4 @@ export function sortPlacesByDistance(places: Place[], lat: number, lon: number) 
   });
   return sortedPlaces;
 }
+
